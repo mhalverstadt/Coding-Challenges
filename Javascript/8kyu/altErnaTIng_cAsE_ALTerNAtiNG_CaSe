@@ -1,16 +1,22 @@
-// All Star Code Challenge #18
+// Kata Task
+// I have a cat and a dog.
 
-// Create a function that accepts 2 string arguments and returns an integer of the count of occurrences the 2nd argument is found in the first one.
+// I got them at the same time as kitten/puppy. That was humanYears years ago.
 
-// If no occurrences can be found, a count of 0 should be returned.
+// Return their respective ages now as [humanYears,catYears,dogYears]
 
-// ("Hello", "o")  ==>  1
-// ("Hello", "l")  ==>  2
-// ("", "z")       ==>  0
-// Notes:
+// NOTES:
 
-// The first argument can be an empty string
-// The second string argument will always be of length 1
+// humanYears >= 1
+// humanYears are whole numbers only
+// Cat Years
+// 15 cat years for first year
+// +9 cat years for second year
+// +4 cat years for each year after that
+// Dog Years
+// 15 dog years for first year
+// +9 dog years for second year
+// +5 dog years for each year after that
 
 //Mine:
 String.prototype.toAlternatingCase = function () {
@@ -22,10 +28,9 @@ String.prototype.toAlternatingCase = function () {
 
 //Top Solution:
 String.prototype.toAlternatingCase = function () {
-    return this.split("").map(a => a === a.toUpperCase()? a.toLowerCase(): a.toUpperCase()).join('')
+  return this.split("").map(a => a === a.toUpperCase()? a.toLowerCase(): a.toUpperCase()).join('')
 }
 
-
 //Test
-"hello WORLD".toAlternatingCase()
 
+"hello WORLD".toAlternatingCase()

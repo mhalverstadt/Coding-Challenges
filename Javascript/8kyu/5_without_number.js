@@ -12,7 +12,9 @@ function unusualFive() {
 }
 
 //Top Solution:
-
+function unusualFive() {
+  return 'fucku'.length
+}
 
 //Test: 
 unusualFive()

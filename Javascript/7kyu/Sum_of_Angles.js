@@ -2,11 +2,15 @@
 
 
 //Mine:
-let angle = n => (n-2) * 180
+function titleCase(title, minorWords) {
+  
+}
+
 
 //Top Solution:
-let angle = n => (n-2) * 180
+
 
 
 
 //Test: 
+console.log(titleCase('a clash of KINGS', 'a an the of'))

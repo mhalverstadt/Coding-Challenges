@@ -8,9 +8,7 @@ const odds = values => values.filter(x => x % 2 !== 0)
 
 
 //Top Solution:
-function odds(values){
-  return values.filter( v => v%2 );
-}
+const odds = values => values.filter(x => x % 2)
 
 
 

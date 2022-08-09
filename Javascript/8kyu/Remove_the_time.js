@@ -14,7 +14,9 @@ function shortenToDate(longDate) {
   }
 
 //Top Solution:
-
+function shortenToDate(longDate) {
+    return longDate.split(",")[0];
+  }
 
 //Test:
 console.log(shortenToDate("Friday May 2, 9am"))

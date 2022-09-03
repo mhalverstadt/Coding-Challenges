@@ -7,7 +7,7 @@
 
 //Mine:
 String.prototype.camelCase=function(str){
-    return this.length === 0 ? "" : arr = this.trim().split(' ').map(word=> `${word[0].toUpperCase()}${word.slice(1)}`).join('')
+    return this.length === 0 ? "" : this.trim().split(' ').map(word=> `${word[0].toUpperCase()}${word.slice(1)}`).join('')
 }
 
 

@@ -20,6 +20,7 @@ function removeSmallest(numbers) {
     return [numbers.slice(0,smallestIndex), numbers.slice(smallestIndex+1)].reduce((acc,el)=> acc.concat(el, []))
 }
 
+
 //Top Solution:
 function removeSmallest(numbers) {
     let indexOfMin = numbers.indexOf(Math.min(...numbers));
@@ -27,5 +28,4 @@ function removeSmallest(numbers) {
   }
 
 //Test:
-console.log(removeSmallest([2,2,1,2,1]))
-console.log(removeSmallest([1,2,3,4,5]))
+console.log()

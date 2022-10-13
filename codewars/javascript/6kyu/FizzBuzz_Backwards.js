@@ -19,7 +19,6 @@
 //return an array of two numbers representings 'fizz' and 'buzz' 
 
 
-
 //Mine:
 
 function reverseFizzBuzz(array) {

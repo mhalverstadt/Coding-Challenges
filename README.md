@@ -1,5 +1,8 @@
-# Codewars Repo
-I try and push at least one Codewars solution everyday. I think it's an important exercise to wake up your brain, and make sure you are continously learning. 
+# Coding Challenges
+I try and push at least one Coding Challenge solution everyday. I think it's an important exercise to wake up your brain, and make sure you are continously learning. 
+
+
+![leetcode](https://user-images.githubusercontent.com/102763323/195640365-9888fd9b-436d-42bf-9018-8cb30ec8f177.jpg)
 
 
 ![Screenshot 2022-08-25 130526](https://user-images.githubusercontent.com/102763323/186749412-e5b96e62-4340-43f9-a226-c4f86834fda4.jpg)

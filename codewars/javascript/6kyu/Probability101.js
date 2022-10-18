@@ -58,7 +58,7 @@ function probability(length, num){
   let firstMultiple = length == 1 ? num*(Math.floor(lowerLimit/num)) : num*(Math.floor(lowerLimit/num)+1)
   multiplesInRange = (lastMultiple - firstMultiple)/2 + 1
   let divisor = length === 1 ? 10 : +(String(9) + String(0).repeat(length-1))
-  return multiplesInRange/divisor*10
+  return multiplesInRange/divisor*100
 }
 
 //Top Solution:
@@ -67,4 +67,5 @@ function probability(length, num){
 //Test:
 console.log(probability(1,2))
 console.log(probability(2,3))
-console.log(probability(4,122))
+console.log(probability(2, 100)
+)

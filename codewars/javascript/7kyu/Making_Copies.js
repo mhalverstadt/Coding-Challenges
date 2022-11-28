@@ -19,4 +19,4 @@ function copyList(l){
 
 //Also:
 
-const coplyList = l => [...l]
+const coplyList = l => [...l] 

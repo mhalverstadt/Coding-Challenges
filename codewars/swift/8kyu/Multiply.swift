@@ -1,6 +1,12 @@
-// This code does not execute properly. Try to figure out why.
+// Very simple, given an integer or a floating-point number, find its opposite.
+
+// Examples:
+
+// 1: -1
+// 14: -14
+// -34: 34
 
 //Mine:
-func multiply(_ a: Double, _ b: Double) -> Double {
-  a * b
+func opposite(number: Double) -> Double {
+  return -number
 }

@@ -21,10 +21,9 @@
 
 //mine:
 function numJewelsInStones(jewels, stones){
-  let jewelsArr = jewels.split('')
   let counter = 0
   for(char of stones){
-    if(jewelsArr.includes(char)){
+    if(jewels.includes(char)){
       counter++
     }
   }
@@ -32,21 +31,21 @@ function numJewelsInStones(jewels, stones){
 }
 
 //solution with map:
-var numJewelsInStones = function(jewels, stones) {
-  const map = {}
- let count = 0
+// var numJewelsInStones = function(jewels, stones) {
+//   const map = {}
+//  let count = 0
 
- for (let char of jewels) {
-     map[char] = true
- }
+//  for (let char of jewels) {
+//      map[char] = true
+//  }
 
- for (let char of stones) {
-     if (map[char]) {
-         count++
-     }
- }
- return count;
-};
+//  for (let char of stones) {
+//      if (map[char]) {
+//          count++
+//      }
+//  }
+//  return count;
+// };
 
 
 

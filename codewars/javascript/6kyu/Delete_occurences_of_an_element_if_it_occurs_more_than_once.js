@@ -1,32 +1,75 @@
-// Enough is enough!
-// Alice and Bob were on a holiday. Both of them took many pictures of the places they've been, and now they want to show Charlie their entire collection. However, Charlie doesn't like these sessions, since the motif usually repeats. He isn't fond of seeing the Eiffel tower 40 times.
-// He tells them that he will only sit for the session if they show the same motif at most N times. Luckily, Alice and Bob are able to encode the motif as a number. Can you help them to remove numbers such that their list contains each number only up to N times, without changing the order?
+// Given a lowercase string that has alphabetic characters only and no spaces, return the highest value of consonant substrings. Consonants are any letters of the alphabet except "aeiou".
 
-// Task
-// Given a list and a number, create a new list that contains each number of list at most N times, without reordering.
-// For example if the input number is 2, and the input list is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
-// With list [20,37,20,21] and number 1, the result would be [20,37,21].
+// We shall assign the following values: a = 1, b = 2, c = 3, .... z = 26.
+
+// For example, for the word "zodiacs", let's cross out the vowels. We get: "z o d ia cs"
+
+// -- The consonant substrings are: "z", "d" and "cs" and the values are z = 26, d = 4 and cs = 3 + 19 = 22. The highest is 26.
+// solve("zodiacs") = 26
+
+// For the word "strength", solve("strength") = 57
+// -- The consonant substrings are: "str" and "ngth" with values "str" = 19 + 20 + 18 = 57 and "ngth" = 14 + 7 + 20 + 8 = 49. The highest is 57.
+
+///////////////
+//input: string of only letters no spaces, case senitive?
+//return: number representing largest run of letters that don't contain vowels
+
+
+//split string based on vowels
+//convert string to index of alphabet +1
+//add up individual strings
+//return largest number
 
 //Mine:
-function deleteNth(arr,n){
-    let result = []
-    for(let i = 0; i < arr.length; i++){
-            if(result.filter(x => x === arr[i]).length < n){
-                result.push(arr[i])
-            }
+function solve(s) {
+  let alphIndex = '0abcdefghijklmnopqrstuvwxyz'
+  let vowelIndex = [1,5,9,15,21]
+  let numbers = s.split('').map(char => alphIndex.indexOf(char))
+  let subArrays = []
+  let subArr = []
+  console.log(numbers)
+  for(const n of numbers){
+    if(vowelIndex.includes(n)){
+      subArrays.push(subArr)
+      subArr = []
+    }else{
+    subArr.push(n)
     }
-    return result
   }
+  subArrays.push(subArr)
+  console.log(subArrays)
+  return Math.max(...subArrays.filter(x => x.length > 0).map(sub => sub.reduce((a,b)=>a+b)))
+};
 
 //Top Solution:
-function deleteNth(arr,x) {
-    var cache = {};
-    return arr.filter(function(n) {
-      cache[n] = (cache[n]||0) + 1;
-      return cache[n] <= x;
-    });
-  }
+function solve(s) {
+  let highest = 0
+  let sum = 0
+  
+  for (const char of s) {
+    if (isConsonant(char)) {
+      sum += getValue(char)
+      
+      if (highest < sum) {
+          highest = sum
+      }
+    } else {
+      sum = 0
+    }
+  }  
+  
+  return highest
+};
+
+function getValue(char) {
+  return char.charCodeAt(0) - 97 + 1
+}
+
+function isConsonant(char) {
+  return !'aeiou'.includes(char)
+}
 
 //Test:
-let result1 = deleteNth([1,1,3,3,7,2,2,2,2], 3)
-result1
+console.log(solve("strength"))
+console.log(solve("zodiac"))
+console.log(solve("chruschtschov"))

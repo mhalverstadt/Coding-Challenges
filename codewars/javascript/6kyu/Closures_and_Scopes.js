@@ -37,4 +37,4 @@ function createFunctions(n) {
 }
 //creating an instance of createFunctions. but since i is function scoped it can be accessed from 
 let callbacks = createFunctions(5)
-console.log(callbacks[0]())
+console.log(callbacks[0]()) 

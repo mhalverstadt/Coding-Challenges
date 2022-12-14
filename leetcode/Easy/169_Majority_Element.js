@@ -35,9 +35,8 @@ function majorityElement(nums){
         let majorityKey = 0
             keyValue = 0
         for(n of nums){
-            elementMap[n] ? elementMap[n]++ : elementMap[n] = 1
+            elementMap[n] = elementMap[n] + 1 || 1
         }
-        console.log(elementMap)
         for (key in elementMap){
             if(elementMap[key] > keyValue){
                 majorityKey = key

@@ -4,27 +4,27 @@
 //input: array and a target -> will ever be empty? always whole numbers?
 //output: array - format? duplicates?
 
-// function twoSum (array, target){
-//     let hashMap = {}
-//     let result = []
-//     for(const num of array){
-//         hashMap[num] = num
-//     }
-//     for(const num of array){
-//         if((target - num) in hashMap){
-//             result.push([num, hashMap[target - num]])
-//         }
-//     }
-//     return result 
-// }
+function twoSum (array, target){
+    let hashMap = {}
+    let result = []
+    for(const num of array){
+        hashMap[num] = num
+    }
+    for(const num of array){
+        if((target - num) in hashMap){
+            result.push([num, hashMap[target - num]])
+        }
+    }
+    return result 
+}
 
 function twoSum(array, target){
     let hashMap = {}
     let result = []
     for(const num of array){
-        let part2 = target - num
-        if(part2 in hashMap){
-            result.push([num, part2])
+        let num2 = target - num
+        if(num2 in hashMap){
+            result.push([num, num2])
         }
         hashMap[num] = true
     }

@@ -49,5 +49,5 @@ function twoSum(array, target){
 
 
 // test: 
-console.log(twoSum([1,2,2,3,4], 4))
+console.log(twoSum([1,2,2,2,2,3,4], 4))
 console.log(twoSum([1,2,2,3,4,5], 6))

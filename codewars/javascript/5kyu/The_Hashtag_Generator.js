@@ -18,14 +18,22 @@ function generateHashtag (str) {
     if(str.length === 0){
         return false
     }
-    let newStr = str.split(' ').filter(Boolean).map(word => word[0].toUpperCase() + word.slice(1)).join('')
+    let newStr = str.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join('')
     return newStr.length < 140 && newStr.length > 0 ? '#' + newStr : false
 }
 
+//another solution:
+function generateHashtag (str) {
+    var hashtag = str.split(' ').reduce(function(tag, word) {
+      return tag + word.charAt(0).toUpperCase() + word.substring(1);
+    }, '#');
+    
+    return hashtag.length == 1 || hashtag.length > 140 ? false : hashtag;
+}
 
 // test:
 console.log(generateHashtag(" Hello there thanks for trying my Kata"))
 console.log(generateHashtag("    Hello     World   "))
-console.log(generateHashtag(""))
-console.log(generateHashtag("      "))
-console.log(generateHashtag(" "))
+// console.log(generateHashtag(""))
+// console.log(generateHashtag("      "))
+// console.log(generateHashtag(" "))

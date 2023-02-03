@@ -32,3 +32,12 @@ Queue.prototype.dequeue = function() {
 Queue.prototype.size = function() {
   return this.arr.length
 };
+
+
+//top 
+class Queue {
+    constructor(){ this.q = [] }
+    enqueue(item){ this.q.unshift(item) }
+    dequeue(){ return this.q.pop() }
+    size(){ return this.q.length }
+  }

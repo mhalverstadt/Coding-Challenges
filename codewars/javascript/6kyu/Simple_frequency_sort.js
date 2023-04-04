@@ -9,19 +9,10 @@
 
 
 function solve(arr){
-
   let freqObj = {}
-
   for (const num of arr) {
-    if (freqObj[num] === undefined) {
-      freqObj[num] = 1;
-    } else {
-      freqObj[num]++;
-    }
+    freqObj[num] = freqObj[num] = 1 || 1
   }
-
-  console.log(freqObj)
-  
   // Sort the array by frequency, then by value
   arr.sort((a, b) => {
     const freqA = freqObj[a];
@@ -33,16 +24,15 @@ function solve(arr){
       return a - b;
     }
   });
-  
   return arr;
 }
 
 //top solution:
-function solve(arr){
-  var r={}
-  for(var n of arr) r[n]=r[n]+1||1
-  return arr.slice().sort((a,b)=>r[b]-r[a]||a-b)
-}
+// function solve(arr){
+//   var r={}
+//   for(var n of arr) r[n]=r[n]+1||1
+//   return arr.slice().sort((a,b)=>r[b]-r[a]||a-b)
+// }
 
 //test: 
 console.log(solve([5,3,10,7,9,8,5,3,7,2,3,4]))

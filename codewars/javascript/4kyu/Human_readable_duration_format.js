@@ -31,53 +31,104 @@
 //seconds in a hour = 3600
 //seconds in a minute = 60
 
-//mine:
-function formatDuration (seconds) {
+//mine:(first attempt mess)
+// function formatDuration (seconds) {
     
-    let years = 0
-    let days = 0
-    let hours = 0
-    let minutes = 0
-    let second = 0
-    let remainingSeconds
-    let result = ''
-    if(seconds >= 31536000) {
-        years = Math.floor(seconds / 31536000)
-        remainingSeconds = seconds % 31536000
-        if(remainingSeconds === 0){
-            return `${years} year${years > 1 ? 's' : ''}`
-        }else result = 
-    }
-    if(years){
-        days = Math.floor(remainingSeconds / 86400)
-        remainingSeconds = remainingSeconds % 86400
-    }else if(seconds >= 86400){
-        days = Math.floor(seconds / 86400)
-        remainingSeconds = seconds % 86400
-    }
-    if(days){
-        hours = Math.floor(remainingSeconds / 3600)
-        remainingSeconds = remainingSeconds % 3600
-    }else if(seconds >= 3600){
-        hours = Math.floor(seconds / 3600)
-        remainingSeconds = seconds % 3600
-    }
-    if(hours){
-        minutes = Math.floor(remainingSeconds / 60)
-        remainingSeconds = remainingSeconds % 60
-    }else if(seconds >= 60){
-        minutes = Math.floor(seconds / 60)
-        remainingSeconds = seconds % 60
-    }
-    if(seconds >= 60){
-        second = remainingSeconds
-    }
+//     let years = 0
+//     let days = 0
+//     let hours = 0
+//     let minutes = 0
+//     let second = 0
+//     let remainingSeconds = seconds
+//     let result = ''
+//     if(seconds >= 31536000) {
+//         years = Math.floor(seconds / 31536000)
+//         remainingSeconds = seconds % 31536000
+//     }
+//     if(years){
+//         days = Math.floor(remainingSeconds / 86400)
+//         remainingSeconds = remainingSeconds % 86400
+//     }else if(seconds >= 86400){
+//         days = Math.floor(seconds / 86400)
+//         remainingSeconds = seconds % 86400
+//     }
+//     if(days){
+//         hours = Math.floor(remainingSeconds / 3600)
+//         remainingSeconds = remainingSeconds % 3600
+//     }else if(seconds >= 3600){
+//         hours = Math.floor(seconds / 3600)
+//         remainingSeconds = seconds % 3600
+//     }
+//     if(hours){
+//         minutes = Math.floor(remainingSeconds / 60)
+//         remainingSeconds = remainingSeconds % 60
+//     }else if(seconds >= 60){
+//         minutes = Math.floor(seconds / 60)
+//         remainingSeconds = seconds % 60
+//     }
+//     if(seconds >= 60){
+//         second = remainingSeconds
+//     }
 
-}
+// }
   
+function formatDuration(seconds) {
+    if (seconds === 0) {
+      return "now";
+    }
+    const MINUTE = 60;
+    const HOUR = 60 * MINUTE;
+    const DAY = 24 * HOUR;
+    const YEAR = 365 * DAY;
+  
+    const years = Math.floor(seconds / YEAR);
+    seconds -= years * YEAR;
+
+    const days = Math.floor(seconds / DAY);
+    seconds -= days * DAY;
+
+    const hours = Math.floor(seconds / HOUR);
+    seconds -= hours * HOUR;
+
+    const minutes = Math.floor(seconds / MINUTE);
+    seconds -= minutes * MINUTE;
+
+    const parts = [];
+  
+    if (years > 0) {parts.push(years + " year" + (years > 1 ? "s" : ""));}
+
+    if (days > 0) {parts.push(days + " day" + (days > 1 ? "s" : ""));}
+  
+    if (hours > 0) {parts.push(hours + " hour" + (hours > 1 ? "s" : ""));}
+  
+    if (minutes > 0) {parts.push(minutes + " minute" + (minutes > 1 ? "s" : ""));}
+  
+    if (seconds > 0) {parts.push(seconds + " second" + (seconds > 1 ? "s" : ""));}
+  
+    if (parts.length === 1) {return parts[0];}
+
+    const lastPart = parts.pop();
+    return parts.join(", ") + " and " + lastPart;
+  }
 
 
-
+//top
+function formatDuration (seconds) {
+    var time = { year: 31536000, day: 86400, hour: 3600, minute: 60, second: 1 },
+        res = [];
+  
+    if (seconds === 0) return 'now';
+    
+    for (var key in time) {
+      if (seconds >= time[key]) {
+        var val = Math.floor(seconds/time[key]);
+        res.push(val += val > 1 ? ' ' + key + 's' : ' ' + key);
+        seconds = seconds % time[key];
+      }
+    }
+   
+    return res.length > 1 ? res.join(', ').replace(/,([^,]*)$/,' and'+'$1') : res[0]
+  }
 
 //test:
 console.log(formatDuration(63072000))

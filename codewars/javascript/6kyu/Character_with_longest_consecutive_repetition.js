@@ -6,7 +6,7 @@
 // For empty string return:
 
 // ["", 0]
-// In JavaScript: If you use Array.sort in your solution, you might experience issues with the random tests as Array.sort is not stable in the Node.js version used by CodeWars. This is not a kata issue.
+
 
 
 //mine:
@@ -14,23 +14,66 @@ function longestRepetition(s) {
   if(s.length < 1){
     return ["", 0];
   }
-  let counts = {}
+  let prevChar
+  let result = [s[0], 1]
   for(let i = 0; i < s.length; i++){
     let char = s[i]
-    if(char in counts && s[i] === prevChar){
-      counts[char]++
-    }else{
-      counts[char] = 1
+    if(s[i] === prevChar){
+      let j = i
+      let count = 1
+      while(s[j] === s[i]){
+        count++
+        if(count > result[1]){
+          result[0] = char
+          result[1] = count
+        }
+        j++
+      }
     }
     prevChar = char
   }
-  let most = (Math.max(...Object.values(counts)))
-  return [Object.keys(counts).find(key => counts[key] === most), most]
+  return result
 }
 
+//top solution:
+function longestRepetition(s) {
+  let count = 0;
+  let prevLetter = '';
+  
+  return s.toLowerCase().split('').reduce((acc, curr) => {
+    if(curr === prevLetter){
+      count++;
+    }
+    else{
+      count = 1;
+    }
 
+    if(count > acc[1]){
+      acc[1] = count;
+      acc[0] = curr;
+    }
 
+    prevLetter = curr;
+    return acc;
+  }, ['', 0]);
+}
 
-//test:
-console.log(longestRepetition("bbbaaabaaaa"))
-console.log(longestRepetition("cbdeuuu900"))
+//or:
+const longestRepetition = s => {
+  let max = 0;
+  let char = ''; 
+  for (let i = 1, l = s.length, c = 1; i <= l; i++) {
+    if (s[i] === s[i - 1]) c++;
+    else {
+      if (c > max) {
+        max = c;
+        char = s[i - 1];   
+      }
+      c = 1;
+    }
+  }
+  return [char, max];
+}
+
+//tests:
+console.log(longestRepetition("aaaa"))

@@ -20,4 +20,5 @@ function generateRange(min, max, step){
     return result
 }
 
+
 //top solution - same
